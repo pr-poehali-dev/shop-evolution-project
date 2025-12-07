@@ -55,11 +55,15 @@ function Index() {
                 <p className="text-xs text-muted-foreground">Спорт и здоровье</p>
               </div>
             </div>
-            <nav className="hidden md:flex gap-6">
+            <nav className="hidden md:flex gap-6 items-center">
               <a href="#catalog" className="text-sm font-medium hover:text-primary transition-colors">Каталог</a>
               <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">О магазине</a>
               <a href="#reviews" className="text-sm font-medium hover:text-primary transition-colors">Отзывы</a>
               <a href="#contacts" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
+              <Button variant="outline" className="gap-2 border-primary text-primary hover:bg-primary hover:text-white">
+                <Icon name="Gift" size={18} />
+                Мои бонусы
+              </Button>
             </nav>
             <Button size="lg" className="hidden md:flex gap-2">
               <Icon name="Phone" size={18} />
