@@ -8,6 +8,7 @@ import { useState } from "react";
 
 function Index() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [showCategories, setShowCategories] = useState(false);
 
   const categories = [
     { id: "all", name: "Все товары", icon: "ShoppingBag" },
@@ -82,7 +83,11 @@ function Index() {
               Профессиональные товары для спорта и индивидуальные консультации от экспертов
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform"
+                onClick={() => setShowCategories(true)}
+              >
                 <Icon name="ShoppingCart" size={20} className="mr-2" />
                 Перейти в каталог
               </Button>
@@ -116,19 +121,34 @@ function Index() {
             <p className="text-lg text-muted-foreground">Все для твоих спортивных достижений</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((cat) => (
-              <Button
-                key={cat.id}
-                variant={activeCategory === cat.id ? "default" : "outline"}
-                onClick={() => setActiveCategory(cat.id)}
-                className="gap-2 transition-all hover:scale-105"
+          {showCategories && (
+            <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
+              {categories.map((cat) => (
+                <Button
+                  key={cat.id}
+                  variant={activeCategory === cat.id ? "default" : "outline"}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className="gap-2 transition-all hover:scale-105"
+                >
+                  <Icon name={cat.icon as any} size={18} />
+                  {cat.name}
+                </Button>
+              ))}
+            </div>
+          )}
+
+          {!showCategories && (
+            <div className="text-center mb-12">
+              <Button 
+                size="lg" 
+                onClick={() => setShowCategories(true)}
+                className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform"
               >
-                <Icon name={cat.icon as any} size={18} />
-                {cat.name}
+                <Icon name="Filter" size={20} className="mr-2" />
+                Показать категории
               </Button>
-            ))}
-          </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product, idx) => (
