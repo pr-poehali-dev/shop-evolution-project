@@ -79,17 +79,24 @@ function Index() {
         </div>
       </header>
 
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 animate-pulse"></div>
+      <section className="py-20 px-4 relative overflow-hidden min-h-[600px]">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/files/ссср.jpg)',
+            filter: 'brightness(0.4)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <Badge className="mb-6 text-lg px-6 py-2 bg-gradient-to-r from-primary to-secondary">
+            <Badge className="mb-6 text-lg px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white">
               🔥 Новинка: Персональные тренировки
             </Badge>
-            <h2 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+            <h2 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight drop-shadow-2xl">
               Твой путь к здоровью начинается здесь
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-lg">
               Профессиональные товары для спорта и индивидуальные консультации от экспертов
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -106,23 +113,23 @@ function Index() {
                 <Icon name="ShoppingCart" size={20} className="mr-2" />
                 Перейти в каталог
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 hover:scale-105 transition-transform">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20 hover:text-white">
                 <Icon name="Calendar" size={20} className="mr-2" />
                 Записаться на консультацию
               </Button>
             </div>
             <div className="mt-12 flex flex-wrap justify-center gap-8 text-center">
-              <div className="animate-scale-in">
-                <div className="text-4xl font-bold text-primary">1000+</div>
-                <div className="text-sm text-muted-foreground">Товаров</div>
+              <div className="animate-scale-in bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl">
+                <div className="text-4xl font-bold text-white">1000+</div>
+                <div className="text-sm text-white/80">Товаров</div>
               </div>
-              <div className="animate-scale-in" style={{animationDelay: '0.1s'}}>
-                <div className="text-4xl font-bold text-secondary">500+</div>
-                <div className="text-sm text-muted-foreground">Довольных клиентов</div>
+              <div className="animate-scale-in bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl" style={{animationDelay: '0.1s'}}>
+                <div className="text-4xl font-bold text-white">500+</div>
+                <div className="text-sm text-white/80">Довольных клиентов</div>
               </div>
-              <div className="animate-scale-in" style={{animationDelay: '0.2s'}}>
-                <div className="text-4xl font-bold text-accent">50+</div>
-                <div className="text-sm text-muted-foreground">Консультаций в неделю</div>
+              <div className="animate-scale-in bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl" style={{animationDelay: '0.2s'}}>
+                <div className="text-4xl font-bold text-white">50+</div>
+                <div className="text-sm text-white/80">Консультаций в неделю</div>
               </div>
             </div>
           </div>
