@@ -62,131 +62,14 @@ function Index() {
               <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">О магазине</a>
               <a href="#reviews" className="text-sm font-medium hover:text-primary transition-colors">Отзывы</a>
               <a href="#contacts" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline" className="gap-2 border-primary text-primary hover:bg-primary hover:text-white">
-                    <Icon name="Gift" size={18} />
-                    Мои бонусы
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
-                  <SheetHeader>
-                    <SheetTitle className="flex items-center gap-2 text-2xl">
-                      <Icon name="Gift" size={28} className="text-primary" />
-                      Мои бонусы
-                    </SheetTitle>
-                    <SheetDescription>
-                      Накапливайте бонусы и получайте скидки на покупки
-                    </SheetDescription>
-                  </SheetHeader>
-                  
-                  <div className="mt-6 space-y-6">
-                    <Card className="bg-gradient-to-br from-primary to-secondary text-white border-0">
-                      <CardContent className="pt-6">
-                        <div className="text-center">
-                          <p className="text-sm opacity-90 mb-2">Ваш баланс</p>
-                          <p className="text-5xl font-bold mb-2">1 250</p>
-                          <p className="text-sm opacity-90">бонусов</p>
-                        </div>
-                        <div className="mt-6 pt-6 border-t border-white/20">
-                          <div className="flex justify-between text-sm mb-2">
-                            <span>До следующего уровня</span>
-                            <span className="font-semibold">750 бонусов</span>
-                          </div>
-                          <Progress value={62} className="h-2 bg-white/20" />
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <div>
-                      <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                        <Icon name="Sparkles" size={20} className="text-primary" />
-                        Как использовать бонусы
-                      </h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                          <div className="bg-primary/10 p-2 rounded-lg">
-                            <Icon name="ShoppingCart" size={20} className="text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-medium">При покупке</p>
-                            <p className="text-sm text-muted-foreground">1 бонус = 1 рубль скидки</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                          <div className="bg-secondary/10 p-2 rounded-lg">
-                            <Icon name="Star" size={20} className="text-secondary" />
-                          </div>
-                          <div>
-                            <p className="font-medium">Начисление</p>
-                            <p className="text-sm text-muted-foreground">5% от каждой покупки</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                        <Icon name="Trophy" size={20} className="text-accent" />
-                        История начислений
-                      </h3>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 rounded-lg border">
-                          <div className="flex items-center gap-3">
-                            <div className="bg-green-100 p-2 rounded-full">
-                              <Icon name="Plus" size={16} className="text-green-600" />
-                            </div>
-                            <div>
-                              <p className="font-medium text-sm">Покупка товаров</p>
-                              <p className="text-xs text-muted-foreground">5 декабря 2024</p>
-                            </div>
-                          </div>
-                          <span className="text-green-600 font-semibold">+150</span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 rounded-lg border">
-                          <div className="flex items-center gap-3">
-                            <div className="bg-red-100 p-2 rounded-full">
-                              <Icon name="Minus" size={16} className="text-red-600" />
-                            </div>
-                            <div>
-                              <p className="font-medium text-sm">Использованы при оплате</p>
-                              <p className="text-xs text-muted-foreground">3 декабря 2024</p>
-                            </div>
-                          </div>
-                          <span className="text-red-600 font-semibold">-200</span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 rounded-lg border">
-                          <div className="flex items-center gap-3">
-                            <div className="bg-green-100 p-2 rounded-full">
-                              <Icon name="Plus" size={16} className="text-green-600" />
-                            </div>
-                            <div>
-                              <p className="font-medium text-sm">Регистрация в программе</p>
-                              <p className="text-xs text-muted-foreground">1 декабря 2024</p>
-                            </div>
-                          </div>
-                          <span className="text-green-600 font-semibold">+500</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Card className="bg-accent/10 border-accent">
-                      <CardContent className="pt-6">
-                        <div className="flex items-start gap-3">
-                          <Icon name="Zap" size={24} className="text-accent" />
-                          <div>
-                            <h4 className="font-semibold mb-1">Бонус за отзыв</h4>
-                            <p className="text-sm text-muted-foreground mb-3">Оставьте отзыв о покупке и получите +100 бонусов</p>
-                            <Button size="sm" className="bg-accent hover:bg-accent/90">
-                              Оставить отзыв
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </SheetContent>
-              </Sheet>
+              <Button 
+                variant="outline" 
+                className="gap-2 border-primary text-primary hover:bg-primary hover:text-white"
+                onClick={() => window.open('https://www.donationalerts.com/r/poehalidev', '_blank')}
+              >
+                <Icon name="Gift" size={18} />
+                Мои бонусы
+              </Button>
             </nav>
             <Button size="lg" className="hidden md:flex gap-2">
               <Icon name="Phone" size={18} />
