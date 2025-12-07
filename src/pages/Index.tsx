@@ -86,7 +86,12 @@ function Index() {
               <Button 
                 size="lg" 
                 className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform"
-                onClick={() => setShowCategories(true)}
+                onClick={() => {
+                  setShowCategories(true);
+                  setTimeout(() => {
+                    document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
               >
                 <Icon name="ShoppingCart" size={20} className="mr-2" />
                 Перейти в каталог
@@ -141,7 +146,12 @@ function Index() {
             <div className="text-center mb-12">
               <Button 
                 size="lg" 
-                onClick={() => setShowCategories(true)}
+                onClick={() => {
+                  setShowCategories(true);
+                  setTimeout(() => {
+                    document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
                 className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform"
               >
                 <Icon name="Filter" size={20} className="mr-2" />
