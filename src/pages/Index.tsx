@@ -5,12 +5,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 
 function Index() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [showCategories, setShowCategories] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizStep, setQuizStep] = useState(1);
+  const [favoriteSport, setFavoriteSport] = useState("");
+  const [currentSport, setCurrentSport] = useState("");
+  const [wantToTry, setWantToTry] = useState("");
 
   const categories = [
     { id: "all", name: "Все товары", icon: "ShoppingBag" },
@@ -140,7 +148,15 @@ function Index() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Каталог товаров</h2>
-            <p className="text-lg text-muted-foreground">Все для твоих спортивных достижений</p>
+            <p className="text-lg text-muted-foreground mb-6">Все для твоих спортивных достижений</p>
+            <Button 
+              onClick={() => setShowQuiz(true)}
+              variant="outline"
+              className="gap-2 border-primary text-primary hover:bg-primary hover:text-white"
+            >
+              <Icon name="Sparkles" size={18} />
+              Подобрать товары по моим предпочтениям
+            </Button>
           </div>
 
           {showCategories && (
@@ -370,6 +386,177 @@ function Index() {
           </div>
         </div>
       </footer>
+
+      <Dialog open={showQuiz} onOpenChange={setShowQuiz}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-2xl">
+              <Icon name="Sparkles" size={24} className="text-primary" />
+              Подбор товаров
+            </DialogTitle>
+            <DialogDescription>
+              Ответьте на несколько вопросов, чтобы мы могли подобрать товары специально для вас
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-6 py-4">
+            {quizStep === 1 && (
+              <div className="space-y-4 animate-fade-in">
+                <h3 className="font-semibold text-lg">Какой ваш любимый вид спорта?</h3>
+                <RadioGroup value={favoriteSport} onValueChange={setFavoriteSport}>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="fitness" id="fav-fitness" />
+                    <Label htmlFor="fav-fitness" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Dumbbell" size={20} className="text-primary" />
+                      Фитнес и тренажёрный зал
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="running" id="fav-running" />
+                    <Label htmlFor="fav-running" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Footprints" size={20} className="text-secondary" />
+                      Бег и легкая атлетика
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="yoga" id="fav-yoga" />
+                    <Label htmlFor="fav-yoga" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Heart" size={20} className="text-accent" />
+                      Йога и растяжка
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="nutrition" id="fav-nutrition" />
+                    <Label htmlFor="fav-nutrition" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Apple" size={20} className="text-green-600" />
+                      Здоровое питание
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            )}
+
+            {quizStep === 2 && (
+              <div className="space-y-4 animate-fade-in">
+                <h3 className="font-semibold text-lg">Каким видом спорта вы занимаетесь сейчас?</h3>
+                <RadioGroup value={currentSport} onValueChange={setCurrentSport}>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="fitness" id="cur-fitness" />
+                    <Label htmlFor="cur-fitness" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Dumbbell" size={20} className="text-primary" />
+                      Фитнес и тренажёрный зал
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="running" id="cur-running" />
+                    <Label htmlFor="cur-running" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Footprints" size={20} className="text-secondary" />
+                      Бег и легкая атлетика
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="yoga" id="cur-yoga" />
+                    <Label htmlFor="cur-yoga" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Heart" size={20} className="text-accent" />
+                      Йога и растяжка
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="none" id="cur-none" />
+                    <Label htmlFor="cur-none" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="MinusCircle" size={20} className="text-muted-foreground" />
+                      Пока не занимаюсь
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            )}
+
+            {quizStep === 3 && (
+              <div className="space-y-4 animate-fade-in">
+                <h3 className="font-semibold text-lg">Каким видом спорта хотели бы заняться?</h3>
+                <RadioGroup value={wantToTry} onValueChange={setWantToTry}>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="fitness" id="try-fitness" />
+                    <Label htmlFor="try-fitness" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Dumbbell" size={20} className="text-primary" />
+                      Фитнес и тренажёрный зал
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="running" id="try-running" />
+                    <Label htmlFor="try-running" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Footprints" size={20} className="text-secondary" />
+                      Бег и легкая атлетика
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="yoga" id="try-yoga" />
+                    <Label htmlFor="try-yoga" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Heart" size={20} className="text-accent" />
+                      Йога и растяжка
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted cursor-pointer">
+                    <RadioGroupItem value="nutrition" id="try-nutrition" />
+                    <Label htmlFor="try-nutrition" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Icon name="Apple" size={20} className="text-green-600" />
+                      Здоровое питание
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            )}
+          </div>
+
+          <div className="flex justify-between gap-3">
+            {quizStep > 1 && (
+              <Button 
+                variant="outline" 
+                onClick={() => setQuizStep(quizStep - 1)}
+                className="gap-2"
+              >
+                <Icon name="ChevronLeft" size={18} />
+                Назад
+              </Button>
+            )}
+            {quizStep < 3 ? (
+              <Button 
+                onClick={() => setQuizStep(quizStep + 1)}
+                disabled={
+                  (quizStep === 1 && !favoriteSport) ||
+                  (quizStep === 2 && !currentSport)
+                }
+                className="gap-2 ml-auto"
+              >
+                Далее
+                <Icon name="ChevronRight" size={18} />
+              </Button>
+            ) : (
+              <Button 
+                onClick={() => {
+                  const sports = [favoriteSport, currentSport, wantToTry];
+                  const mostFrequent = sports.sort((a,b) =>
+                    sports.filter(v => v===a).length - sports.filter(v => v===b).length
+                  ).pop();
+                  setActiveCategory(mostFrequent || "all");
+                  setShowCategories(true);
+                  setShowQuiz(false);
+                  setQuizStep(1);
+                  setTimeout(() => {
+                    document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+                disabled={!wantToTry}
+                className="gap-2 ml-auto bg-gradient-to-r from-primary to-secondary"
+              >
+                Показать товары
+                <Icon name="Sparkles" size={18} />
+              </Button>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
